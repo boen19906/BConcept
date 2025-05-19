@@ -1,12 +1,16 @@
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./HomePage";
+import Navbar from "./NavBar";
+import "./App.css";
 
-function App() {
-
+export default function App() {
   return (
-    <>
-      <h1>BConept</h1>
-    </>
-  )
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </Router>
+  );
 }
-
-export default App
