@@ -25,33 +25,41 @@ export default function HomePage() {
   };
 
   return (
-    <div
-      className="hero"
-      style={{ backgroundImage: `url(${imageList[currentIndex]})` }}
-    >
-      <div className="overlay">
-        <h1>Are you sigma?</h1>
-        <p>Crafting unforgettable events with impact.</p>
+    <>
+      {/* Hero Section */}
+      <div className="hero" style={{ backgroundImage: `url(${imageList[currentIndex]})` }}>
+        <div className="overlay">
+          <h1>Are you sigma?</h1>
+          <p>Crafting unforgettable events with impact.</p>
+        </div>
+  
+        <button className="arrow left" onClick={goToPrev}>&#10094;</button>
+        <button className="arrow right" onClick={goToNext}>&#10095;</button>
+  
+        <div className="dots">
+          {imageList.map((_, idx) => (
+            <span
+              key={idx}
+              className={`dot ${idx === currentIndex ? "active" : ""}`}
+              onClick={() => setCurrentIndex(idx)}
+            ></span>
+          ))}
+        </div>
       </div>
-
-      {/* Arrows */}
-      <button className="arrow left" onClick={goToPrev}>
-        &#10094;
-      </button>
-      <button className="arrow right" onClick={goToNext}>
-        &#10095;
-      </button>
-
-      {/* Dots */}
-      <div className="dots">
-        {imageList.map((_, idx) => (
-          <span
-            key={idx}
-            className={`dot ${idx === currentIndex ? "active" : ""}`}
-            onClick={() => setCurrentIndex(idx)}
-          ></span>
-        ))}
+  
+      {/* 👇 Clients Section — moved OUTSIDE the hero */}
+      <div className="clients-section">
+        <h2>Our Clients</h2>
+        <ul className="clients-list">
+          <li>Adidas</li>
+          <li>Spotify</li>
+          <li>Samsung</li>
+          <li>Red Bull</li>
+          <li>Google</li>
+        </ul>
       </div>
-    </div>
+    </>
   );
+  
+  
 }
